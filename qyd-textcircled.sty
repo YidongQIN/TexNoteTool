@@ -1,15 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesPackage{qyd-textcircled}[2019/06/21 3 put any packages you would like to use here]
+\ProvidesPackage{qyd-textcircled}[Tikz for a better text circled command]
 
-% 圆圈数字序号 \textcircled 的美化
-\RequirePackage{pifont}% 传统方案 pkg{pifont}
-\newcommand{\circlerm}[1]{\ding{\numexpr\value{#1}+171\relax}}% 衬线字体数字
-\newcommand{\circlesf}[1]{\ding{\numexpr\value{#1}+191\relax}}% 非衬线字体数字
-\RequirePackage{tikz}% 绘图方案 pkg{Tikz}
+% 圆圈数字序号 \textcircled{} 的美化
+\RequirePackage{tikz}
 \DeclareRobustCommand{\tikzcircnum}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=0.5pt] (char) {#1};}}% 绘制圆
 \let\textcircled@old\textcircled
-\RenewDocumentCommand\textcircled{s m}{% 带*则替换为新 Tikz 命令
+\RenewDocumentCommand\textcircled{s m}{% 可以用 \textcircled*{} 调用
   \IfBooleanTF{#1}
-  {\tikzcircnum{#2}}
-  {\textcircled@old{#2}}
+  {\tikzcircnum{#2}}% 带*则替换为 Tikz 美化的命令
+  {\textcircled@old{#2}}% 不带*则为原始的命令
   }

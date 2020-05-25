@@ -1,0 +1,7 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-pifont}[pifont for circled numbers]
+
+\RequirePackage{pifont}% 传统方案 pkg{pifont}
+% 接受的参数是 <counter> 计数器，不是文字的数字。
+\newcommand{\circlerm}[1]{\ding{\numexpr\value{#1}+171\relax}}% 衬线字体数字
+\newcommand{\circlesf}[1]{\ding{\numexpr\value{#1}+191\relax}}% 非衬线字体数字
