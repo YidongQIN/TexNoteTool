@@ -8,16 +8,13 @@
 }
 \DeclareStringOption[pifontrm]{numstyle}
 \newif\ifftnt@pifontrm
+\ftnt@pifontrmtrue% 默认使用 pifont 的衬线序号
 \newif\ifftnt@pifontsf
 \newif\ifftnt@tikzcirc
 \newif\ifftnt@xunicirc
 \newif\ifftnt@normtype
 \define@key{ftnt}{numstyle}{%
-  % \iffootnote@pifontrmfalse
-  % \iffootnote@pifontsffalse
-  % \iffootnote@tikzcircfalse
-  % \iffootnote@xunicircfalse
-  % \iffootnote@normalfalse
+  \ftnt@pifontrmfalse% 关闭默认选项
   \expandafter\csname ftnt@#1true\endcsname}
 \ProcessKeyvalOptions*
 
@@ -47,6 +44,7 @@
   \ifnum\value{#1}>9% 脚注数字最多处理到 9
     \PackageWarning{qyd-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
   \fi% 编号不能过多，所以强烈建议打开 perpage 选项。
+  % \csname ftnt@numstyle#1\endcsname
   \ifftnt@pifontrm
     \pifontrm{#1}%
   \else
