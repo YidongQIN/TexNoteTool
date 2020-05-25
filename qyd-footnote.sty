@@ -1,36 +1,77 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesPackage{qyd-footnote}[footnote]
+\ProvidesPackage{qyd-footnote}[footnote with circled number and other settings]
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=ftnt,
+  prefix=ftnt@
+}
+\DeclareStringOption[pifontrm]{numstyle}
+\newif\ifftnt@pifontrm
+\newif\ifftnt@pifontsf
+\newif\ifftnt@tikzcirc
+\newif\ifftnt@xunicirc
+\newif\ifftnt@normtype
+\define@key{ftnt}{numstyle}{%
+  % \iffootnote@pifontrmfalse
+  % \iffootnote@pifontsffalse
+  % \iffootnote@tikzcircfalse
+  % \iffootnote@xunicircfalse
+  % \iffootnote@normalfalse
+  \expandafter\csname ftnt@#1true\endcsname}
+\ProcessKeyvalOptions*
 
 \RequirePackage[bottom,perpage,hang]{footmisc}
-\RequirePackage{qyd-textcircled}
-\usepackage{etoolbox}
-% TODO 引入宏包选项，控制 pifont 或者 tikz
-\RequirePackage{kvoptions}
-\def\ftnocircled#1{%
-  \ifnum\value{#1}>9% 脚注数字最多处理到 9
-    \ClassError{tongjithesis}{Too many footnotes in this page.}{Keep footnote less than 10.}
-  \fi
-  % \iftongji@pifont
-  %   \circlerm{#1}% 采用 Pifont 的衬线数字、图形较小
-  % \else\iftongji@circle
-    \tikzcircnum{\arabic{#1}}% 采用 Tikz 在外侧绘制圆形
-  % \else
-  %   \xiaoliu\arabic{#1}% 原始类型
-  % \fi
-  % \fi
-}
+\RequirePackage{etoolbox}
 
-\renewcommand{\thefootnote}{\ftnocircled{footnote}}
-\renewcommand{\thempfootnote}{\ftnocircled{mpfootnote}}% minipage footnote
-% 定义脚注分割线
+% 特定长度的脚注分割线
 \def\footnoterule{\vspace{-3pt}\hrule\@width0.3\textwidth\@height0.4\p@\vspace{2.6pt}}
-\let\tongji@footnotesize\footnotesize
-% 字号（宋体小五），以及悬挂缩进（1.5字符）。
-% \renewcommand\footnotesize{\tongji@footnotesize\xiaowu[1.5]}
-\footnotemargin1.5em\relax
-% \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。
-% 利用\cs{patchcmd}动态调整 \cs{@makefnmark} 的定义
-\let\old@makefnmark\@makefnmark
-\def\old@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
-\pretocmd{\@makefntext}{\let\@makefnmark\old@@makefnmark}{}{}
-\apptocmd{\@makefntext}{\let\@makefnmark\old@makefnmark}{}{}
+
+% 脚注中的编号默认是上标样式，可改为普通大小。
+% 来源：https://www.zhihu.com/question/53030087
+\def\nosuper@makefnmark{\hbox{\normalfont\@thefnmark\space}}
+\patchcmd\@makefntext{\@makefnmark}{\nosuper@makefnmark}{}{}
+%% 不用 etoolbox 的另一种打临时热补丁的写法
+%\let\save@makefntext\@makefntext
+%\long\def\@makefntext#1{{%
+%  \let\@makefnmark\nosuper@makefnmark
+%  \save@makefntext{#1}}}
+
+% 使用带圈数字作为编号
+\RequirePackage{qyd-pifont-circlednum}% 调用 Pifont 字体
+\RequirePackage{qyd-tikz-textcircled}% 在数字外绘制圆形。
+% pkg{qyd-tikz-textcircled} 优势：只是绘制圆形，不影响字体等设置。劣势：如果数字/字母过多，则圆形过大。
+\RequirePackage{qyd-xuni-textcircled}% 调用xunicode字体。
+% pkg{qyd-xuni-textcircled} 优势：可以支持三位数字的编号。劣势：字体不能在此处修改，需要回到 xuni-textcircled 宏包。
+\def\ftncircled#1{%
+  \ifnum\value{#1}>9% 脚注数字最多处理到 9
+    \PackageWarning{qyd-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
+  \fi% 编号不能过多，所以强烈建议打开 perpage 选项。
+  \ifftnt@pifontrm
+    \piCircRM{#1}%
+  \else
+  \ifftnt@pifontsf
+    \piCircSF{#1}%
+  \else
+  \ifftnt@tikzcirc
+    \tikzcircled{\arabic{#1}}%
+  \else
+  \ifftnt@xunicirc
+    \xunicircled{\arabic{#1}}%
+  \else
+  \ifftnt@normtype
+    {\footnotesize \arabic{#1}}%
+  \fi
+  \fi
+  \fi
+  \fi
+  \fi
+}
+\renewcommand\thefootnote{\ftncircled{footnote}}
+\renewcommand\thempfootnote{\ftncircled{mpfootnote}}% minipage footnote
+
+% 脚注中编号与文字间距
+\footnotemargin1.5em
+
+% 脚注文字格式
+\renewcommand{\footnotelayout}{\itshape}

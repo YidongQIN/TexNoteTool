@@ -1,44 +1,49 @@
 % !TEX program = xelatex
 \documentclass{qyd-note}
-
 \usepackage{zhlipsum}
 
-\usepackage{qyd-listings}
-\usepackage{qyd-enumitem}
-\usepackage{qyd-algorithm}
-\usepackage{qyd-table}
-\usepackage{qyd-textcircled}
-\usepackage{qyd-footnote}
-\usepackage{qyd-sjqy}
+% \usepackage{qyd-listings}
+% \usepackage{qyd-enumitem}
+% \usepackage{qyd-algorithm}
+% \usepackage{qyd-sjqy}
+% \usepackage{qyd-table}
+% \usepackage{qyd-tikz-textcircled}
+% \usepackage{qyd-xuni-textcircled}
+% \usepackage{qyd-hook-circled-number}
+\usepackage[numstyle=normtype]{qyd-footnote}
 
 \begin{document}
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+中文 gb7714-2015\footnote{foo}的内容。
+% 中文 gb7714-2015\footnote{foo}的内容。
+% 中文 gb7714-2015\footnote{foo}的内容。
 
-\title{Total Commander}
-\author{秦一栋}
+\end{document}
 
-% \maketitle
+\section{带圈数字}
 
-\stA
+\subsection{tikz 方案}
 
-\stB
+对比 \textcircled {1} vs% \tikzcircled{1} 与 \xunicircled{1} 的字体
 
-\stC
+对比 \textcircled {a} vs% \tikzcircled{a} 与 \xunicircled{a} 的字体
 
-\stD
+对比 \textcircled {20} vs% \tikzcircled{20} 与 \xunicircled{20} 的字体
 
-\stE
+对比 \textcircled {22} vs% \tikzcircled{22} 与 \xunicircled{22} 的字体
 
+对比 \textcircled {122} vs% \tikzcircled{122} 与 \xunicircled{122} 的字体
+
+对比 \textcircled {479} vs% \tikzcircled{479} 与 \xunicircled{479} 的字体
 
 \section{基本列表}
-
-首先，先熟悉一下基本列表环境 \textcircled{1} 不带星号是原本的不好看的圆圈。
-\footnote{脚注1}
-
-最常用的是有序列表 \textcircled*{2} 加了星号就好看很多了。
-\footnote{脚注2}
-
-最常用的是有序列表 2 加了星号就好看很多了。
-\footnote{脚注3}
 
 \begin{enumerate}
   \item 中文 gb7714-2015.bbx
@@ -73,7 +78,6 @@
 
 先填充一些废话。\zhlipsum[6]
 
-可以参见第~\ref{ssc:git-workflow}节的例子，也可以看下面这个。
 区别在于，本小节的例子完全展示了\emph{默认参数}情况下的样式。
 
 首先是有序列表。
@@ -384,6 +388,14 @@ algorithm 是个 float 环境，相当于 table。
   \item 更好的方案是用另一个可以接受宽度的的浮动体包围、algorithm 以选项 H 放置其中。
   比如 tcolorbox、fullwidth 等。
 \end{enumerate}
+
+\section{钢筋符号}
+用 SJQY 字体生成 钢筋符号，自定义了命令。
+\stA
+\stB
+\stC
+\stD
+\stE
 
 \chapter{Totalcommander}
 

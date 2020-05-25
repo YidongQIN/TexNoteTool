@@ -1,0 +1,23 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-xuni-textcircled}[xunicode for circled text or number]
+
+\RequirePackage{fontspec}
+\RequirePackage{xunicode-addon}
+\newfontfamily\xunipag{ipag.ttf}% 无衬线类似黑体
+\newfontfamily\xunipam{ipam.ttf}% 衬线类似宋体
+% 同文件夹下的其他几个字体在这种情况显示没有差别
+% \newfontfamily\xunipagp{ipagp.ttf}
+% \newfontfamily\xunipamp{ipamp.ttf}
+% \newfontfamily\xunipaexg{ipaexg.ttf}
+% \newfontfamily\xunipaexm{ipaexm.ttf}
+
+\xeCJKDeclareCharClass{Default}{% 声明为西文字体以便在 ctex 中正常显示
+  "24EA,        % ⓪
+  "2460->"2473, % ①–⑳
+  "3251->"32BF, % ㉑–㊿
+  "24FF,        % ⓿
+  "2776->"277F, % ❶–❿
+  "24EB->"24F4  % ⓫–⓴
+}
+
+\newcommand{\xunicircled}[1]{{\xunipag\textcircled{#1}}}

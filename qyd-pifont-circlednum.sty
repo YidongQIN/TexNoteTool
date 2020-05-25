@@ -1,0 +1,6 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-pifont-circlednum}[Circled 1 to 10 by Pifont]
+
+\RequirePackage{pifont}% 传统方案 pkg{pifont}
+\newcommand{\piCircRM}[1]{\ding{\numexpr\value{#1}+171\relax}}% 衬线字体数字
+\newcommand{\piCircSF}[1]{\ding{\numexpr\value{#1}+191\relax}}% 非衬线字体数字

@@ -1,0 +1,9 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-tikz-textcircled}[Tikz for a better text circled command]
+
+% 圆圈数字序号 \textcircled{} 的美化
+\RequirePackage{tikz}
+\DeclareRobustCommand{\tikzcircled}[1]{
+    \tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=0.3pt, scale = 1.0] (char) {#1};}
+    }% 绘制圆
+% 最好仅用于个位数，否则绘画出过大的圆圈。
