@@ -48,10 +48,10 @@
     \PackageWarning{qyd-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
   \fi% 编号不能过多，所以强烈建议打开 perpage 选项。
   \ifftnt@pifontrm
-    \piCircRM{#1}%
+    \pifontrm{#1}%
   \else
   \ifftnt@pifontsf
-    \piCircSF{#1}%
+    \pifontsf{#1}%
   \else
   \ifftnt@tikzcirc
     \tikzcircled{\arabic{#1}}%
