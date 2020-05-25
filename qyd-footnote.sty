@@ -19,17 +19,18 @@
 
 % 使用带圈数字作为编号
 \RequirePackage{qyd-pifont-circlednum}% 调用 Pifont 字体
+% pkg{qyd-pifont-circlednum} 优势：精巧好看。劣势：只有1~10可用。
 \RequirePackage{qyd-tikz-textcircled}% 在数字外绘制圆形。
 % pkg{qyd-tikz-textcircled} 优势：只是绘制圆形，不影响字体等设置。劣势：如果数字/字母过多，则圆形过大。
 \RequirePackage{qyd-xuni-textcircled}% 调用xunicode字体。
 % pkg{qyd-xuni-textcircled} 优势：可以支持三位数字的编号。劣势：字体不能在此处修改，需要回到 xuni-textcircled 宏包。
-
+% 作为宏包选项
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=ftnt,
   prefix=ftnt@
 }
-\DeclareStringOption[pifontrm]{numstyle}
+\DeclareStringOption{numstyle}
 \newif\ifftnt@pifontrm
 \ftnt@pifontrmtrue% 默认使用 pifont 的衬线序号
 \newif\ifftnt@pifontsf
@@ -40,25 +41,20 @@
   \ftnt@pifontrmfalse% 关闭默认选项
   \csname ftnt@#1true\endcsname}
 \ProcessKeyvalOptions*
-
 \def\ftncircled#1{%
   \ifnum\value{#1}>9% 脚注数字最多处理到 9
     \PackageWarning{qyd-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
   \fi% 编号不能过多，所以强烈建议打开 perpage 选项。
   \ifftnt@pifontrm
-    \pifontrm{#1}%
-  \else
-  \ifftnt@pifontsf
-    \pifontsf{#1}%
-  \else
-  \ifftnt@tikzcirc
-    \tikzcircled{\arabic{#1}}%
-  \else
-  \ifftnt@xunicirc
-    \xunicircled{\arabic{#1}}%
-  \else
-  \ifftnt@normtype
-    {\footnotesize \arabic{#1}}%
+    \pifontrm{#1}% pifont 接受的就是 <counter>
+  \else \ifftnt@pifontsf
+    \pifontsf{#1}% pifont 接受的就是 <counter>
+  \else \ifftnt@tikzcirc
+    \tikzcircled{\arabic{#1}}% tikz 接受的是文字
+  \else \ifftnt@xunicirc
+    \xunicircled{\arabic{#1}}% xuni 接受的是文字
+  \else \ifftnt@normtype
+    {\footnotesize \arabic{#1}}% 普通等等文字
   \fi
   \fi
   \fi
