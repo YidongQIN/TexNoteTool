@@ -1,0 +1,36 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-footnote}[footnote]
+
+\RequirePackage[bottom,perpage,hang]{footmisc}
+\RequirePackage{qyd-textcircled}
+\usepackage{etoolbox}
+% TODO 引入宏包选项，控制 pifont 或者 tikz
+\RequirePackage{kvoptions}
+\def\ftnocircled#1{%
+  \ifnum\value{#1}>9% 脚注数字最多处理到 9
+    \ClassError{tongjithesis}{Too many footnotes in this page.}{Keep footnote less than 10.}
+  \fi
+  % \iftongji@pifont
+  %   \circlerm{#1}% 采用 Pifont 的衬线数字、图形较小
+  % \else\iftongji@circle
+    \tikzcircnum{\arabic{#1}}% 采用 Tikz 在外侧绘制圆形
+  % \else
+  %   \xiaoliu\arabic{#1}% 原始类型
+  % \fi
+  % \fi
+}
+
+\renewcommand{\thefootnote}{\ftnocircled{footnote}}
+\renewcommand{\thempfootnote}{\ftnocircled{mpfootnote}}% minipage footnote
+% 定义脚注分割线
+\def\footnoterule{\vspace{-3pt}\hrule\@width0.3\textwidth\@height0.4\p@\vspace{2.6pt}}
+\let\tongji@footnotesize\footnotesize
+% 字号（宋体小五），以及悬挂缩进（1.5字符）。
+% \renewcommand\footnotesize{\tongji@footnotesize\xiaowu[1.5]}
+\footnotemargin1.5em\relax
+% \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。
+% 利用\cs{patchcmd}动态调整 \cs{@makefnmark} 的定义
+\let\old@makefnmark\@makefnmark
+\def\old@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
+\pretocmd{\@makefntext}{\let\@makefnmark\old@@makefnmark}{}{}
+\apptocmd{\@makefntext}{\let\@makefnmark\old@makefnmark}{}{}

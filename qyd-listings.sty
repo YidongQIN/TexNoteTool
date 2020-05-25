@@ -1,0 +1,138 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-listings}[Code Hignlight]
+
+% 颜色，主要用于代码展示
+\RequirePackage{color}
+\definecolor{darkred}{rgb}{0.6,0.0,0.0}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{darkgreen}{rgb}{0,0.50,0}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{lightblue}{rgb}{0.0,0.42,0.91}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{orange}{rgb}{0.99,0.48,0.13}
+\definecolor{grass}{rgb}{0.18,0.80,0.18}
+\definecolor{pink}{rgb}{0.97,0.15,0.45}
+\definecolor{bluegray}{rgb}{0.81,0.86,0.91}
+\definecolor{pythonblue}{rgb}{0.168,0.353,0.514}
+
+% 代码展示
+\RequirePackage{listings}
+% General Settings
+\lstset{
+  float=htbp,
+  breaklines=true,
+  frame=single,
+  aboveskip={12bp \@plus2pt \@minus2pt},
+  belowskip={12bp \@plus2pt \@minus2pt},
+  captionpos=b,
+  abovecaptionskip=0bp,
+  belowcaptionskip=0bp,
+  escapeinside={\%*}{*)},
+  numbers=left,
+  numbersep=15pt,
+  numberstyle=\tiny,
+  xleftmargin=2em,
+  xrightmargin=2em,
+}
+% Listings styles
+\lstdefinestyle{monocolor}{% black and white
+  backgroundcolor=\color{white},
+  basicstyle=\small\ttfamily,
+  showstringspaces=false,
+}
+\lstdefinestyle{inline}{% inline normal size font
+  basicstyle=\normalsize\ttfamily,
+  showstringspaces=false,
+}
+\lstdefinestyle{colored}{% basic color theme, works without Package color
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  commentstyle=\color{green}\itshape,% may use darkgreen for better visual effects
+  keywordstyle=\color{blue}\bfseries\itshape,
+  stringstyle=\color{red},
+  showstringspaces=false,
+}
+\lstdefinestyle{colorEX}{% more colorful style
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  commentstyle=\color{darkgreen}\slshape,
+  keywordstyle=\color{darkblue}\bfseries\itshape,
+  keywordstyle=[2]\color{blue}\bfseries,
+  keywordstyle=[3]\color{grass},
+  keywordstyle=[4]\color{red},
+  keywordstyle=[5]\color{orange},
+  stringstyle=\color{darkred},
+  emphstyle=\color{pink}\underbar,
+  showstringspaces=false,
+}
+% Python Listings syntax and styles
+\lstdefinelanguage{PythonPlus}[]{Python}{% prefined Python sty is not complete
+  morekeywords=[1]{,as,assert,nonlocal,with,yield,self,True,False,None,} % Python builtin
+  morekeywords=[2]{,__init__,__add__,__mul__,__div__,__sub__,__call__,__getitem__,__setitem__,__eq__,__ne__,__nonzero__,__rmul__,__radd__,__repr__,__str__,__get__,__truediv__,__pow__,__name__,__future__,__all__,}, % magic methods
+  morekeywords=[3]{,object,type,isinstance,copy,deepcopy,zip,enumerate,reversed,list,set,len,dict,tuple,range,xrange,append,execfile,real,imag,reduce,str,repr,}, % common functions
+  morekeywords=[4]{,Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError,}, % errors
+  morekeywords=[5]{,ode,fsolve,sqrt,exp,sin,cos,arctan,arctan2,arccos,pi, array,norm,solve,dot,arange,isscalar,max,sum,flatten,shape,reshape,find,any,all,abs,plot,linspace,legend,quad,polyval,polyfit,hstack,concatenate,vstack,column_stack,empty,zeros,ones,rand,vander,grid,pcolor,eig,eigs,eigvals,svd,qr,tan,det,logspace,roll,min,mean,cumsum,cumprod,diff,vectorize,lstsq,cla,eye,xlabel,ylabel,squeeze,},% numpy / math
+}
+\lstdefinelanguage{PyBrIM}[]{PythonPlus}{% extend Python with user-defined keywords
+  emph={d,E,a,Fc28,Fy,Fu,D,des,supplier,Material,Rectangle,PyELMT}, % add word you want to highlight
+  }
+% XML syntax and styles (To replace the predefined Listings.XML, which is preliminary)
+\lstdefinelanguage{XML}{
+  % tag is identifier
+  moredelim=[s][keywordstyle]{\ }{=},% attribute's key
+  morestring=[s]{"}{"},% attribute's value
+  morestring=[s][]{>}{<},% text
+  morecomment=[s]{?}{?},
+  morecomment=[s]{!--}{--},
+  morecomment=[l]{!DOCTYPE},
+}
+% XML in Firefox
+\lstdefinestyle{Firefox_XML}{
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  identifierstyle=\bfseries\color{darkred},% tag name
+  keywordstyle=\bfseries\color{red},% attribute's key
+  stringstyle=\color{blue},% attribute's value
+  keywordstyle=[3]\color{black},% text
+  commentstyle=\itshape\color{darkgreen},
+}
+% OpenBrIM Listings syntax and styles
+\lstdefinelanguage{ParamML}{
+  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,C,R,},
+  morekeywords={Node1,Node2,Node3,Node4,Factor,Case,},
+  morekeywords={N,V,T,Type,D,Extends,Role,UT,UC,},
+  morekeywords={Lng,Lat,Elev,P1,P2,P3,},
+  morestring=[s][\color{blue}]{"}{"},
+  morestring=[s][\color{black}]{>}{<},
+  morecomment=[s][\color{green}]{<!--}{-->},
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  commentstyle=\color{green}\itshape,
+  identifierstyle=\color{darkred}\bfseries,
+  keywordstyle=\color{red},
+  stringstyle=\color{black},
+  showstringspaces=false,
+}
+% EXPRESS-G syntax and styles
+\lstdefinelanguage{EXPRESS}{
+  morekeywords=[1]{,SCHEMA,END_SCHEMA,ENTITY,END_ENTITY,},
+  morekeywords=[2]{,STRING,BINARY,LOGICAL,BOOLEAN,NUMBER,INTEGER,REAL,LIST,},
+  emph={,OPTIONAL,SUBTYPE,SUPERTYPE,OF,DERIVE,WHERE,},
+  morestring=[s]{\ \ }{:\ },% attribute's key
+  morecomment=[s]{--}{;},
+  showstringspaces=false,
+}
+% settings of `list of Listings'
+\renewcommand{\lstlistingname}{代码片段}% 原"Listing"改为"代码片段"
+\renewcommand{\lstlistlistingname}{代码索引}
+\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0em}{2em}{\lstlistingname~#1}{#2}}% 代码索引的对齐样式
+\newcommand{\lisfoflistings}{
+  \lstlistoflistings
+  \thispagestyle{fancy}
+  \fancyhead{}
+  \fancyhead[RO,LE]{\wuhao\songti\tongji@schoolname~\tongji@capply~\lstlistlistingname}
+  \fancyfoot{}
+  \fancyfoot[C]{\songti\wuhao\thepage}
+  \addcontentsline{toc}{chapter}{\lstlistlistingname}
+  }

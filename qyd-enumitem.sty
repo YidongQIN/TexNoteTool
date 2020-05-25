@@ -1,0 +1,23 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-enumitem}[lists]
+
+\RequirePackage[shortlabels]{enumitem}
+\setlist{nosep}% 移除所有列表环境的竖向默认间距，以符合中文习惯。
+
+% 设置各级列表的样式，依赖于 enumitem 宏包
+\setlist[1]{labelindent=\parindent,leftmargin=\parindent}
+\setlist[2]{labelindent=1em,leftmargin=\parindent}
+\setlist[3]{labelindent=1em,leftmargin=\parindent}
+\setlist[enumerate,1]{label=(\arabic*), ref = \arabic*}
+\setlist[enumerate,2]{label=(\alph*), ref=\theenumi.\alph*}
+\setlist[enumerate,3]{label=(\roman*),ref=\theenumii.\roman*}
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\circ$}
+\setlist[itemize,3]{label=\textendash}
+\setlist[description]{font=\heiti}
+\newlist{inlinecn}{enumerate*}{1}
+\setlist[inlinecn,1]{label=\tikzcircnum{\arabic*}}
+\setlist[inlinecn,2]{label= 第\chinese{inlinecni}，}
+\newlist{inline}{enumerate*}{2}
+\setlist[inline,1]{label=(\arabic*)}
+\setlist[inline,2]{label=\roman*.}
