@@ -1,23 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{qyd-footnote}[footnote with circled number and other settings]
 
-\RequirePackage{kvoptions}
-\SetupKeyvalOptions{
-  family=ftnt,
-  prefix=ftnt@
-}
-\DeclareStringOption[pifontrm]{numstyle}
-\newif\ifftnt@pifontrm
-\ftnt@pifontrmtrue% 默认使用 pifont 的衬线序号
-\newif\ifftnt@pifontsf
-\newif\ifftnt@tikzcirc
-\newif\ifftnt@xunicirc
-\newif\ifftnt@normtype
-\define@key{ftnt}{numstyle}{%
-  \ftnt@pifontrmfalse% 关闭默认选项
-  \expandafter\csname ftnt@#1true\endcsname}
-\ProcessKeyvalOptions*
-
 \RequirePackage[bottom,perpage,hang]{footmisc}
 \RequirePackage{etoolbox}
 
@@ -40,6 +23,24 @@
 % pkg{qyd-tikz-textcircled} 优势：只是绘制圆形，不影响字体等设置。劣势：如果数字/字母过多，则圆形过大。
 \RequirePackage{qyd-xuni-textcircled}% 调用xunicode字体。
 % pkg{qyd-xuni-textcircled} 优势：可以支持三位数字的编号。劣势：字体不能在此处修改，需要回到 xuni-textcircled 宏包。
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=ftnt,
+  prefix=ftnt@
+}
+\DeclareStringOption[pifontrm]{numstyle}
+\newif\ifftnt@pifontrm
+\ftnt@pifontrmtrue% 默认使用 pifont 的衬线序号
+\newif\ifftnt@pifontsf
+\newif\ifftnt@tikzcirc
+\newif\ifftnt@xunicirc
+\newif\ifftnt@normtype
+\define@key{ftnt}{numstyle}{%
+  \ftnt@pifontrmfalse% 关闭默认选项
+  \csname ftnt@#1true\endcsname}
+\ProcessKeyvalOptions*
+
 \def\ftncircled#1{%
   \ifnum\value{#1}>9% 脚注数字最多处理到 9
     \PackageWarning{qyd-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
