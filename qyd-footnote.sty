@@ -45,7 +45,6 @@
   \ifnum\value{#1}>9% 脚注数字最多处理到 9
     \PackageWarning{qyd-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
   \fi% 编号不能过多，所以强烈建议打开 perpage 选项。
-  % \csname ftnt@numstyle#1\endcsname
   \ifftnt@pifontrm
     \pifontrm{#1}%
   \else
