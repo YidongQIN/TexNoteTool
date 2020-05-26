@@ -1,0 +1,19 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-hyperref}[ref and url]
+
+\RequirePackage{hyperref}
+\hypersetup{% 设置PDF电子书签格式
+  CJKbookmarks=true,% 删除原\ifxetex判断，CJKbookmark并入下方统一设置
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  colorlinks=false,
+  plainpages=false,
+  pdfborder=0 0 0,% 移除超链接的 color box 边框
+  }
+
+\urlstyle{tt}% 四选一设置 \url{} 的字体样式 tt/rm/sf/same（与前文保持一致）
+% \def\UrlFont{\ttfamily\small}% 可以用此命令精确设定 URL 的字体样式
+\RequirePackage{bookmark}% 生成 PDF 电子书签

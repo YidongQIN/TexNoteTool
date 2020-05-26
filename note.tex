@@ -1,7 +1,8 @@
 % !TEX program = xelatex
 \documentclass[UTF8,AutoFakeBold,zihao=-4,scheme=chinese]{ctexart}
 \usepackage{zhlipsum}
-\usepackage{hyperref}
+
+\usepackage{{qyd-hyperref}}
 \usepackage{qyd-geometry}
 \usepackage{qyd-listings}
 \usepackage{qyd-enumitem}
@@ -278,39 +279,11 @@
   caption=中文标题没有括号,
   label=lst:outer,
   style=colored]
-  import numpy as np
+
+  import numpy a np
   def incmatrix(genl1,genl2):
       m = len(genl1)
-      #compute the bitwise xor matrix
-      M1 = bitxormatrix(genl1)
-      for i in range(m-1):
-          for j in range(i+1, m):
-              [r,c] = np.where(M2 == M1[i,j])
-              for k in range(len(r)):
-                  VT[(i)*n + r[k]] = 1;
-      return M
-\end{lstlisting}
-
-% \subsubsection{代码片段 Listings 引用}
-
-% 这里测试三个代码片段的引用。
-
-% 代码片段，没有前缀，直接中括号，见 \ref{no label} 代码。
-
-% 代码片段，是按照现有的snippet直接插入的样式 \ref{lst:2nd} 代码。
-
-% 代码片段， \ref{lst:outer} 代码，手动在环境之后加了label，可以被 vscode 插件检测到。
-
-% 代码片段， \ref{lst:parenthesis} 代码，仅供测试，caption 加了花括号。
-
-% 貌似不能从ref命令中自动调用。难道需要手动加 label 更好吗？
-\begin{lstlisting}[language=Python,
-  caption={Must have Parenthesis},
-  label=lst:parenthesis]
-  import numpy as np
-  def incmatrix(genl1,genl2):
-      m = len(genl1)
-      #compute the bitwise xor matrix
+      # compute the bitwise xor matrix
       M1 = bitxormatrix(genl1)
       for i in range(m-1):
           for j in range(i+1, m):
