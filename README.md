@@ -23,30 +23,29 @@ The `qyd-<pkg>.sty` is composed of two parts:
 margin width is set to 0.25 width of the page.
 
 # pkg{qyd-fancyhdr}
+Three kinds of page style.
 
 # pkg{qyd-tcolorbox}
+Colored fancy box.
 
-# pkg{qyd-amsmath} pkg{qyd-amssymb}
-
-# pkg{qyd-amsthm}
-
-# pkg{qyd-ntheorem}
+# pkg{qyd-amsmath} pkg{qyd-amssymb} pkg{qyd-ntheorem}
 
 # pkg{qyd-listings}
+1. Programming Language Definition.
+2. Highlight
 
 # pkg{qyd-enumitem}
 
 # pkg{qyd-marginnote}
 
-# pkg{qyd-booktabs}
-
-# pkg{qyd-longtables}
-
-# pkg{qyd-tikz}
+# pkg{qyd-table}
+Some package for Table environment.
 
 # pkg{qyd-algorithms}
+`pkg{algorithm}` and `pkg{algorithmic}`
 
-# pkg{qyd-subcaption}
+# pkg{qyd-figure}
+`pkg{graphicx}` and `pkg{subcaption}`
 
 # pkg{qyd-xsim}
 
@@ -220,5 +219,3 @@ stone-zeng 整理了一些常用的、自带的字体，及其适用范围。
 # pkg{qyd-sjqy} 钢筋符号输入
 利用 SJQY.ttf 字体生成钢筋一级到五级的符号。
 定义为形如 `\stA` 的命令。
-
-# pkg{qyd-}

@@ -1,0 +1,42 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-fancyhdr}[Header and Footer]
+
+\RequirePackage{fancyhdr}% 定义三种页眉页脚格式：
+  % {empty}：页眉页脚都没有
+  % {plain}：只显示页脚的页码
+  % {headings}：页眉页脚同时显示
+  \fancypagestyle{empty}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    }
+  \fancypagestyle{plain}{%
+    \fancyhead{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}}
+  \fancypagestyle{headings}{%
+    \fancyhead{}
+    \fancyhead[RO]{\leftmark}
+    \fancyhead[LE]{even page left}
+    \fancyfoot{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0pt}}
+% 论文整体版面布置分为三部分
+\renewcommand\frontmatter{%
+  \clearpage
+  \@mainmatterfalse
+  \pagenumbering{Roman}
+  \pagestyle{headings}
+  }
+\renewcommand\mainmatter{%
+  \clearpage
+  \@mainmattertrue
+  \pagenumbering{arabic}
+  \pagestyle{headings}
+  }
+\renewcommand\backmatter{%
+  \clearpage
+  \@mainmattertrue
+}

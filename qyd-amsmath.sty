@@ -1,0 +1,11 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-amsmath}[Math and Theorey]
+
+% 公式基础宏包 AmSTeX
+\RequirePackage{amsmath}
+% 允许太长的公式断行、分页等。
+\allowdisplaybreaks[4]
+\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter.\fi\@arabic\c@equation}
+
+% 定理环境，启用 amsmath 选项确保兼容性
+\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}

@@ -1,0 +1,27 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-tcolorbox}[Geometry of paper setting]
+
+\usepackage[skins]{tcolorbox}
+\newtcolorbox{lyrics}[2][]{
+    colback=blue!10!white,
+    colbacktitle=red!10!white,
+    coltitle=blue!70!black,
+    fontupper=\itshape,
+    fonttitle=\bfseries,
+    halign=flush center,
+    width=0.6\linewidth,
+    float=h,
+    every float=\centering,
+    detach title,
+    after upper={\par\hfill\tcbtitle},
+    title={——《#2》\,#1},
+}
+
+\newtcolorbox{todo}{
+    colback=red!5!white,
+    colframe=red!75!black,
+    colbacktitle=red!85!black,
+    detach title,
+    before upper={\bfseries TODO:\quad},
+    leftright skip=2em,
+}

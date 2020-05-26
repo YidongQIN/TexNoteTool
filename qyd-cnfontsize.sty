@@ -1,0 +1,29 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-cnfontsize}[Chinese Font Size]
+
+\RequirePackage{etex}
+
+% \fontsize{size}{skip} 其中skip就是行之间的baseline to baseline的距离，即行距。
+\def\cn@fontsize#1#2{%
+    \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+% 以上的例子用\cn@fontsize{chuhao}{42bp}展开就是这样：
+% \newcommand \chuhao [1][1.3]{\fontsize{42bp}{#1\dimexpr 42bp}\selectfont}
+\cn@fontsize{chuhao}{42bp}
+\cn@fontsize{xiaochu}{36bp}
+\cn@fontsize{yihao}{26bp}
+\cn@fontsize{xiaoyi}{24bp}
+\cn@fontsize{erhao}{22bp}
+\cn@fontsize{xiaoer}{18bp}
+\cn@fontsize{sanhao}{16bp}
+\cn@fontsize{xiaosan}{15bp}
+\cn@fontsize{sihao}{14bp}
+\cn@fontsize{banxiaosi}{13bp}
+\cn@fontsize{xiaosi}{12bp}
+\cn@fontsize{dawu}{11bp}
+\cn@fontsize{wuhao}{10.5bp}
+\cn@fontsize{xiaowu}{9bp}
+\cn@fontsize{liuhao}{7.5bp}
+\cn@fontsize{xiaoliu}{6.5bp}
+\cn@fontsize{qihao}{5.5bp}
+\cn@fontsize{bahao}{5bp}

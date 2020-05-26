@@ -7,7 +7,5 @@
 
 \LoadClass[UTF8,AutoFakeBold,zihao=-4,scheme=chinese]{ctexbook}
 
-\RequirePackage{graphicx}
-
 \RequirePackage{verbatim}
 

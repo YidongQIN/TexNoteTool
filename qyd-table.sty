@@ -1,17 +1,25 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{qyd-table}[Table related packages]
 
+% 表格基础宏包
+\RequirePackage{array}% array支持数学模式表格，例如矩阵
+\RequirePackage{booktabs}% 基础三线表\cs{toprule}，\cs{midrule}，\cs{bottomrule}
+\RequirePackage{makecell}% 行内换行
 
-\RequirePackage{array}
-\RequirePackage{booktabs}
+% 表内容字体
+\let\old@tabular\@tabular
+\def\tongji@tabular{\wuhao[1.5]\old@tabular}
+
 % array宏包定义三种新的column对齐格式，允许使用L C R的带长度的表格列
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 % 表格内部换行，可以用自定义的\tabincell，或者宏包{multirow}或{makecell}
 \newcommand{\tabincell}[2]{%参数：{对齐方式}{单元格内容}
   \begin{tabular}{@{}#1@{}}#2\end{tabular}}
 \RequirePackage{multirow}% 表格中支持跨行
+
 \RequirePackage{diagbox}% 表格中的反斜线
 \RequirePackage{slashbox}% 表格中的反斜线
 \RequirePackage{tabularx}% 固定宽度的表格
@@ -19,11 +27,13 @@
 \newcolumntype{a}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}% 左对齐
 \newcolumntype{d}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}% 右对齐
 \newcolumntype{s}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}% 居中
+
 \RequirePackage{dcolumn}% 表格中数字按小数点对齐
 \newcolumntype{i}[1]{D{.}{.}{#1}}% 接受一个整数控制小数点后位数，负数则居中
+
 % 长表格跨页：\pkg{longtable} \pkg{supertabular} 二选一即可
 \RequirePackage{longtable}
   % longtable 的 default font size
-  \let\tongji@LT@array\LT@array
-  \def\LT@array{\wuhao[1.5]\tongji@LT@array}
+  \let\old@LT@array\LT@array
+  \def\LT@array{\small\old@LT@array}
 \RequirePackage{supertabular}

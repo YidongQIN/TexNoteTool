@@ -1,0 +1,18 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-geometry}[Geometry of paper setting]
+
+\RequirePackage{geometry}
+\geometry{
+a4paper,% 210 * 297mm
+% nomarginpar,% 即
+marginparwidth=0.25\pagewidth,
+marginparsep=10pt,
+hcentering,% 将hmarginratio设为1:1，即left=right
+left=31.7mm,% 注意left=right
+includehead=true,% body 部分包含top
+top=20.00mm,% Word 模板页眉顶端距离20mm
+headheight=5.4mm,% 上缘页边距25.4mm-top=5.4mm
+includefoot=false,% body部分不包含bottom
+bottom=25.4mm,% 校方模板底面页边距
+footskip=5.4mm,% \footskip指的是baseline of last line of text and baseline of footer的距离
+}
