@@ -1,26 +1,28 @@
 % !TEX program = xelatex
-\documentclass{qyd-note}
+\documentclass[UTF8,AutoFakeBold,zihao=-4,scheme=chinese]{ctexart}
 \usepackage{zhlipsum}
-
-% \usepackage{qyd-listings}
-% \usepackage{qyd-enumitem}
-% \usepackage{qyd-algorithm}
-% \usepackage{qyd-sjqy}
-% \usepackage{qyd-table}
+\usepackage{hyperref}
+\usepackage{qyd-geometry}
+\usepackage{qyd-listings}
+\usepackage{qyd-enumitem}
+\usepackage{qyd-algorithm}
+\usepackage{qyd-sjqy}
+\usepackage{qyd-table}
 \usepackage{qyd-pifont-circlednum}
-% \usepackage{qyd-tikz-textcircled}
-% \usepackage{qyd-xuni-textcircled}
-% \usepackage{qyd-hook-circled-number}
-
+\usepackage{qyd-tikz-textcircled}
+\usepackage{qyd-xuni-textcircled}
+%  不建议使用 \usepackage{qyd-hook-circled-number}
 \usepackage{qyd-footnote}
-% \usepackage[numstyle=pifontrm]{qyd-footnote}
-% \usepackage[numstyle=pifontsf]{qyd-footnote}
-% \usepackage[numstyle=tikzcirc]{qyd-footnote}
-% \usepackage[numstyle=xunicirc]{qyd-footnote}
-% \usepackage[numstyle=normtype]{qyd-footnote}
-
+% 选项：numstyle= pifontrm | pifontsf | tikzcirc | xunicirc | normtype |
 
 \begin{document}
+
+\title{自定义笔记}
+\author{ADUN}
+\maketitle
+
+\section{脚注美化}
+
 中文 gb7714-2015\footnote{foo}的内容。
 中文 gb7714-2015\footnote{foo}的内容。
 中文 gb7714-2015\footnote{foo}的内容。
@@ -32,23 +34,19 @@
 中文 gb7714-2015\footnote{foo}的内容。
 % 中文 gb7714-2015\footnote{foo}的内容。
 
-\end{document}
-
 \section{带圈数字}
 
-\subsection{tikz 方案}
+原生命令\textcircled {1} 绘制Tikz圆形\tikzcircled{1} 更改Unicode字体 \xunicircled{1} 的带圈数字。
 
-对比 \textcircled {1} vs% \tikzcircled{1} 与 \xunicircled{1} 的字体
+原生命令\textcircled {a} 绘制Tikz圆形\tikzcircled{a} 更改Unicode字体 \xunicircled{a} 的带圈数字。
 
-对比 \textcircled {a} vs% \tikzcircled{a} 与 \xunicircled{a} 的字体
+原生命令\textcircled {20} 绘制Tikz圆形\tikzcircled{20} 更改Unicode字体 \xunicircled{20} 的带圈数字。
 
-对比 \textcircled {20} vs% \tikzcircled{20} 与 \xunicircled{20} 的字体
+原生命令\textcircled {22} 绘制Tikz圆形\tikzcircled{22} 更改Unicode字体 \xunicircled{22} 的带圈数字。
 
-对比 \textcircled {22} vs% \tikzcircled{22} 与 \xunicircled{22} 的字体
+原生命令\textcircled {122} 绘制Tikz圆形\tikzcircled{122} 更改Unicode字体 \xunicircled{122} 的带圈数字。
 
-对比 \textcircled {122} vs% \tikzcircled{122} 与 \xunicircled{122} 的字体
-
-对比 \textcircled {479} vs% \tikzcircled{479} 与 \xunicircled{479} 的字体
+原生命令\textcircled {479} 绘制Tikz圆形\tikzcircled{479} 更改Unicode字体 \xunicircled{479} 的带圈数字。
 
 \section{基本列表}
 
@@ -149,15 +147,15 @@
   \item 调整本地工作目录
   \item 创建项目
   \begin{enumerate}[a.]
-    \item 在git网站建立好新项目，把库克隆到本地 \\
+    \item 在git网站建立好新项目，把库克隆到本地
 
-    \verb| git clone http:// |
+      \verb| git clone http:// |
 
-    \item 或者，直接在本地文件夹目录下初始化 \\
+    \item 或者，直接在本地文件夹目录下初始化
 
-    \verb| git init |
+      \verb| git init |
 
-    本地初始化后，如要连接网络远程仓库可以再用
+      本地初始化后，如要连接网络远程仓库可以再用
 
     \verb| git remote add |
   \end{enumerate}
@@ -404,7 +402,7 @@ algorithm 是个 float 环境，相当于 table。
 \stD
 \stE
 
-\chapter{Totalcommander}
+\section{Totalcommander}
 
 TC 是一款\textbf{强大}的文件管理软件，提供了许多便捷功能，可以 取代windows资源管理器。
 （虽然有一定上手难度，而且界面丑）。
@@ -470,24 +468,24 @@ d. 如果还是嫌麻烦，就参考联系 everything 的协作。
 
 \section{插件}
 因为丰富的插件才让tc有了巨大的扩展性。
-1. QuickSearch eXtended
+
+\subsection{QuickSearch eXtended}
 就是刚刚说的用于加强快速搜索功能的插件。
 最初要依靠它才能匹配中文拼音，现在这个需求已经降低。几个新版本tc对汉语的等非英语语种有了支持。
 它的安装如果失败了，就手动把tcmatch.exe放到tc.exe同目录下。
-2. F4menu-modified
+\subsection{F4menu-modified}
 原生的F4编辑不能适应不同后缀对应不同程序的需求。所以一个F4menu就是必需的。
 不过，好像tc对它的支持不怎么好。所以需要自己解压到plugins文件夹下，然后在options中设置到F4menu.exe
-3. util\_TCPlugman
+\subsection{util\_TCPlugman}
 插件管理。当初有大量插件的时候会用，现在想来也有点鸡肋了。
-4. 查看类
+\subsection{查看类}
 就是调用F3时候的插件，可以对图片、代码，甚至office文档。通过查看模式打开，一是启动速度更快，更重要的是可以避免误操作的删除、修改。
-○ wlx\_uLister
-对office进行预览，强烈推荐。而且也能支持其他的不少插件，可以说是一站式的选择。
+wlx\_uLister 对office进行预览，强烈推荐。而且也能支持其他的不少插件，可以说是一站式的选择。
 首先安装ulister，
-然后按照其readme文件说明，去 <http://www.oracle.com/technetwork/middleware/content-management/downloads/oit-dl-otn-097435.html> 下载 Viewer Technology 文件包
+然后按照其readme文件说明，去 \url{http://www.oracle.com/technetwork/middleware/content-management/downloads/oit-dl-otn-097435.html} 下载 Viewer Technology 文件包
 并把制定的redist文件夹复制到ulister的目录中。
-5. 处理类
-○ wcx\_7zip 可以支持7zip格式的压缩包。考虑到我用的压缩软件就是7zip，所以还是装上。
+\subsection{处理类}
+wcx\_7zip 可以支持7zip格式的压缩包。考虑到我用的压缩软件就是7zip，所以还是装上。
 
 \section{关联程序}
 除了在wincmd.ini中的程序设置外，还有几处自己的习惯。
@@ -497,8 +495,10 @@ d. 如果还是嫌麻烦，就参考联系 everything 的协作。
 
 \begin{verbatim}
     [em_everything]
-    button=C:\Users\yqin78\Documents\1AETV\Everything\Everything.exe
-    cmd="C:\Users\yqin78\Documents\1AETV\Everything\Everything.exe"
+    button=
+      C:\Users\yqin78\Documents\1AETV\Everything\Everything.exe
+    cmd=
+      "C:\Users\yqin78\Documents\1AETV\Everything\Everything.exe"
     param=-search "%P "
     path=.
 
@@ -515,10 +515,13 @@ d. 如果还是嫌麻烦，就参考联系 everything 的协作。
 everything也是我喜欢的软件，专业搜索。
 通常喜欢把右键菜单的浏览/浏览路径改为调用totalcommander。
 
-
 \begin{verbatim}
-    explore_command2=$exec("c:\Users\yqin78\Documents\1AETV\totalcmd\TOTALCMD.EXE" "/O" "/T" "%1")
-    explore_path_command2=$exec("c:\Users\yqin78\Documents\1AETV\totalcmd\TOTALCMD.EXE" "/O" "/T" "$parent(%1))
+    explore_command2=$exec(
+      "c:\Users\yqin78\Documents\1AETV\totalcmd\TOTALCMD.EXE"
+      "/O" "/T" "%1")
+    explore_path_command2=$exec(
+      "c:\Users\yqin78\Documents\1AETV\totalcmd\TOTALCMD.EXE"
+      "/O" "/T" "$parent(%1))
 \end{verbatim}
 
 \end{document}

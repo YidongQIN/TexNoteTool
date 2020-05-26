@@ -5,7 +5,7 @@
 % \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 % \ProcessKeyvalOptions*
 
-\LoadClass[UTF8,AutoFakeBold,zihao=-4,scheme=chinese]{ctexbook}
+\LoadClass[
 
-\RequirePackage{verbatim}
+
 

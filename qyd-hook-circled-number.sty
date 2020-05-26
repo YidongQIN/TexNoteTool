@@ -3,7 +3,9 @@
 % 警告：这个方法会影响所有调用 \textcircled 的命令 非常危险
 
 \RequirePackage{fontspec}
-\newfontfamily\EnclosedNumbers{AdobeArabic-Regular}% 可自行寻找字体
+\RequirePackage{xpatch,xunicode-addon}
+% \xeCJKDeclareCharClass{Default}{"24EA, "2460->"2473, "3251->"32BF}
+\newfontfamily\EnclosedNumbers{DejaVuSans}% 可自行寻找字体
 
 % 用钩子在所有调用 \textcircled 的地方临时更改字体
 \AtBeginUTFCommand[\textcircled]{\begingroup\EnclosedNumbers}
