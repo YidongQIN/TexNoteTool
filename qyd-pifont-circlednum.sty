@@ -2,5 +2,8 @@
 \ProvidesPackage{qyd-pifont-circlednum}[Circled 1 to 10 by Pifont]
 
 \RequirePackage{pifont}% 传统方案 pkg{pifont}
-\newcommand{\pifontrm}[1]{\ding{\numexpr\value{#1}+171\relax}}% 衬线字体数字
-\newcommand{\pifontsf}[1]{\ding{\numexpr\value{#1}+191\relax}}% 非衬线字体数字
+% (https://stone-zeng.github.io/images/circled-numbers/pifont.svg)
+\newcommand{\pifontrm}[1]{\ding{\numexpr\value{#1}+171\relax}}% 阳文 衬线
+\newcommand{\pifntrmy}[1]{\ding{\numexpr\value{#1}+181\relax}}% 阴文 衬线
+\newcommand{\pifontsf}[1]{\ding{\numexpr\value{#1}+191\relax}}% 阳文 非衬线
+\newcommand{\pifntsfy}[1]{\ding{\numexpr\value{#1}+201\relax}}% 阴文 非衬线

@@ -7,6 +7,7 @@
 % \usepackage{qyd-algorithm}
 % \usepackage{qyd-sjqy}
 % \usepackage{qyd-table}
+\usepackage{qyd-pifont-circlednum}
 % \usepackage{qyd-tikz-textcircled}
 % \usepackage{qyd-xuni-textcircled}
 % \usepackage{qyd-hook-circled-number}
@@ -16,7 +17,9 @@
 % \usepackage[numstyle=pifontsf]{qyd-footnote}
 % \usepackage[numstyle=tikzcirc]{qyd-footnote}
 % \usepackage[numstyle=xunicirc]{qyd-footnote}
-\usepackage[numstyle=normtype]{qyd-footnote}
+% \usepackage[numstyle=normtype]{qyd-footnote}
+
+\renewcommand{\thefootnote}{\pifontrm{footnote}}
 
 \begin{document}
 中文 gb7714-2015\footnote{foo}的内容。
