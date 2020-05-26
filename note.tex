@@ -268,40 +268,6 @@
 
 先填充一些废话。\zhlipsum[8]
 
-\begin{lstlisting}[language=ParamML,
-  % caption=,
-  % label=lst:,
-  ]
-<O  N="C4000Psi"  T="Material"  D="Concrete">
-  <P N="d"  V="0.0000002248"  D="Density"/>
-  <P N="E"  V="3604.9965"  D="Modulus of Elasticity"/>
-  <P N="Fc28"  V="4"  D="Concrete Compressive Strength"/>
-</O>
-<!-- comment -->
-\end{lstlisting}
-
-\begin{lstlisting}[language=Python,
-  caption=Second CODE Block,
-  label=lst:2nd,
-  style=colored]
-  import numpy as np
-  def incmatrix(genl1,genl2):
-      m = len(genl1)
-      #compute the bitwise xor matrix
-      M1 = bitxormatrix(genl1)
-      for i in range(m-1):
-          for j in range(i+1, m):
-              [r,c] = np.where(M2 == M1[i,j])
-              for k in range(len(r)):
-                  VT[(i)*n + r[k]] = 1;
-
-                  if M is None:
-                      M = np.copy(VT)
-                  else:
-                      M = np.concatenate((M, VT), 1)
-      return M
-\end{lstlisting}
-
 为 宏包 Listings 定义了许多种语言和样式，比如XML，再基于XML定义了 ParamML。
 语法比较简单，看看 tongjithesis.sty 文件 也就懂了。
 故不赘述。
@@ -311,7 +277,7 @@
 \begin{lstlisting}[language=Python,
   caption=中文标题没有括号,
   label=lst:outer,
-  style=colorEX]
+  style=colored]
   import numpy as np
   def incmatrix(genl1,genl2):
       m = len(genl1)
