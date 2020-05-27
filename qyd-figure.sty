@@ -1,19 +1,35 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesPackage{qyd-figure}[Include Fig]
+\ProvidesPackage{smallnorm-figure}[Include Fig]
 
 \RequirePackage{graphicx}
+\RequirePackage{caption}
 \RequirePackage{subcaption}
 
+
+%% 浮动对象和文字之间的距离
+\setlength{\floatsep}{12bp \@plus4pt \@minus1pt}% vertical distance between two floats
+\setlength{\intextsep}{12bp \@plus4pt \@minus2pt}% distance between floats inserted inside the page text (using h) and the text proper. 对于插入正文中的float用\intextsep调节图片上部和下部距离正文的距离。
+\setlength{\textfloatsep}{12bp \@plus4pt \@minus2pt}% distance between floats on the top or the bottom and the text
+\setlength{\@fptop}{0bp \@plus1.0fil}
+\setlength{\@fpsep}{12bp \@plus2.0fil}
+\setlength{\@fpbot}{0bp \@plus1.0fil}
+
+%% 浮动体页面布局优化
+% 防止浮动对象占据过多的文本页面，防止在很大空白的浮动页上放置很小的图形。
+\renewcommand{\textfraction}{0.15}% 一个page的text的最小比例是0.15，默认是0.2。当然如果浮动对象占的比例太大，就会移到另一个页面。
+\renewcommand{\topfraction}{0.85}% 页面顶部至多有0.85的空间被浮动对象填充。
+\renewcommand{\bottomfraction}{0.65}% 同理，底部的。
+\renewcommand{\floatpagefraction}{0.60}% float page(no text, only floats)被浮动对象占的比例最少是0.6
 % \DeclareCaptionLabelFormat 来自 subcaption 宏包。
-\DeclareCaptionLabelFormat{qyd}{{\small\normalfont #1~#2}}% 去掉图表号后面的冒号。
+\DeclareCaptionLabelFormat{smallnorm}{{\small\normalfont #1~#2}}% 去掉图表号后面的冒号。
 % 图序与图名文字之间空一个汉字符宽度。
-\DeclareCaptionLabelSeparator{qyd}{\hspace{1em}}
-\DeclareCaptionFont{qyd}{\small}
-\captionsetup{labelformat=qyd,labelsep=qyd,font=qyd}
+\DeclareCaptionLabelSeparator{smallnorm}{\hspace{1em}}
+\DeclareCaptionFont{smallnorm}{\small}
+\captionsetup{labelformat=smallnorm,labelsep=smallnorm,font=smallnorm}
 % 图：caption 在下，段前空 6 磅，段后空 12 磅，单倍行距
-\captionsetup[table]{position=top,aboveskip=6bp,belowskip={12bp-\intextsep}}
+\captionsetup[table]{position=top,aboveskip=6bp}%,
 % 表：caption 在上，段前空 6 磅，段后空 6 磅，单倍行距
-\captionsetup[figure]{position=bottom,aboveskip=6bp,belowskip={6bp-\intextsep}}
-\captionsetup[sub]{font=qyd,aboveskip=6bp,belowskip=6bp}
+\captionsetup[figure]{position=bottom,aboveskip=6bp,belowskip=6bp}
+\captionsetup[sub]{font=smallnorm,aboveskip=6bp,belowskip=6bp}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}% 子图编号是 1.a, 1.b
 % \renewcommand{\thesubtable}{(\alph{subtable})}% 子表编号是 1.a, 1.b
