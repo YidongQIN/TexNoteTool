@@ -2,6 +2,7 @@
 \ProvidesPackage{qyd-xuni-textcircled}[xunicode for circled text or number]
 
 \RequirePackage{fontspec,xunicode-addon}
+% 调用 Tex Live 自带的日语字体
 \newfontfamily\xunipag{ipag.ttf}% 无衬线类似黑体
 \newfontfamily\xunipam{ipam.ttf}% 衬线类似宋体
 % 同文件夹下的其他几个字体在这种情况显示没有差别
@@ -9,6 +10,7 @@
 % \newfontfamily\xunipamp{ipamp.ttf}
 % \newfontfamily\xunipaexg{ipaexg.ttf}
 % \newfontfamily\xunipaexm{ipaexm.ttf}
+% 可以换用其他字体，但是不确保能有带圈数字
 
 \xeCJKDeclareCharClass{Default}{% 声明为西文字体以便在 ctex 中正常显示
   "24EA,        % ⓪
