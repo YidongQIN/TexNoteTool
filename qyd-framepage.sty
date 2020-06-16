@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{qyd-framepage}[Framing the whole page]
+
+\RequirePackage{tikz}
+\RequirePackage{fancybox}
+
+\AtBeginDocument{%
+    % 边框距离文字的内容
+    \fancypage{\setlength{\fboxsep}{5pt}\framebox}{}
+    % 或者用 Tikz 精确控制尺寸
+    % \fancyput(-16pt,-\textheight){%
+    %     \tikz{%
+    %         \draw (0pt,0pt) rectangle (8pt+\textwidth,\textheight);
+    %         }
+    %     }
+    }
