@@ -17,40 +17,40 @@ In order to use this template for both English and Chinese note, the `ctex` clas
 
 Some essential packages are also required, such as pkg{array}, pkg{geometry}, pkg{graphicx}, pkg{titletoc}.
 
-However, most packages are included by `\RequirePackage{qyd-<pkg>}` command.
+However, most packages are included by `\RequirePackage{tnt-<pkg>}` command.
 The `qyd-<pkg>.sty` is composed of two parts:
 1. the aimed package is loaded by `\RequirePakcage{pkg}`.
 2. the settings.
 
-# pkg{qyd-geometry}
+# pkg{tnt-geometry}
 margin width is set to 0.25 width of the page.
 
-# pkg{qyd-fancyhdr}
+# pkg{tnt-fancyhdr}
 Three kinds of page style.
 
-# pkg{qyd-tcolorbox}
+# pkg{tnt-tcolorbox}
 Colored fancy box.
 
-# pkg{qyd-amsmath} pkg{qyd-amssymb} pkg{qyd-ntheorem}
+# pkg{tnt-amsmath} pkg{tnt-amssymb} pkg{tnt-ntheorem}
 
-# pkg{qyd-listings}
+# pkg{tnt-listings}
 1. Programming Language Definition.
 2. Highlight
 
-# pkg{qyd-enumitem}
+# pkg{tnt-enumitem}
 
-# pkg{qyd-marginnote}
+# pkg{tnt-marginnote}
 
-# pkg{qyd-table}
+# pkg{tnt-table}
 Some package for Table environment.
 
-# pkg{qyd-algorithms}
+# pkg{tnt-algorithms}
 `pkg{algorithm}` and `pkg{algorithmic}`
 
-# pkg{qyd-figure}
+# pkg{tnt-figure}
 `pkg{graphicx}` and `pkg{subcaption}`
 
-# pkg{qyd-xsim}
+# pkg{tnt-xsim}
 
 # 带圈数字
 
@@ -59,7 +59,7 @@ Some package for Table environment.
 stone-zeng 相当完备地总结了[带圈数字](https://stone-zeng.github.io/2019-02-09-circled-numbers/) 的实现方法。
 复现了他的方案，同时为了避免以后重复劳动，把这几种处理方法定义成命令，制作成宏包。
 
-## pkg{qyd-pifont-circlednum}
+## pkg{tnt-pifont-circlednum}
 传统的实现带全数字的方法，是利用 Pifont 字体的 `\ding{<number>}` 命令调用杂锦符号（dingbats）。
 
 ![](https://stone-zeng.github.io/images/circled-numbers/pifont.svg)
@@ -88,7 +88,7 @@ stone-zeng 相当完备地总结了[带圈数字](https://stone-zeng.github.io/2
 * 数字只有1到10 （也有说可以找到20，暂未验证）。
 * 接受参数是 `<number>` 即计数器数字，不是输入字符。所以跟其它几种方法相比，灵活性不足。
 
-## pkg{qyd-tikz-textcircled}
+## pkg{tnt-tikz-textcircled}
 用大名鼎鼎的 Tikz 直接在某个字符外绘制圆圈。
 
 ### 实现
@@ -103,7 +103,7 @@ stone-zeng 相当完备地总结了[带圈数字](https://stone-zeng.github.io/2
 * 占据更大的水平距离。
 * 需要用 `\arabic` 等命令把计数器数字转化为数字文本。
 
-## pkg{qyd-xuni-textcircled} 与 pkg{qyd-hook-textcircled}
+## pkg{tnt-xuni-textcircled} 与 pkg{tnt-hook-textcircled}
 
 ### 原理 Unicode
 数字 0–50 的带圈版本都分配了对应的 Unicode 码位，因而在现代 TEX 引擎（X⁠E⁠TEX 和 Lua­TEX）中，配合合适的字体，理论上可以直接输入这些符号。
@@ -178,11 +178,11 @@ stone-zeng 相当完备地总结了[带圈数字](https://stone-zeng.github.io/2
 
    1. 通俗的习惯是，在需要圆圈的命令时，局部改变字体 `{\xxxFontFamily \textcircled{}}` 。
 
-      这也是 `{qyd-xuni-textcircled}` 采用做法。
+      这也是 `{tnt-xuni-textcircled}` 采用做法。
 
    2. 粗暴的方法是用钩子 `\AtBeginUTFCommand[]{}` 和 `\AtEndUTFCommand` ，锁住 `\textcircled` 命令。
 
-      见 `{qyd-hook-circled-number}` 的设置。
+      见 `{tnt-hook-circled-number}` 的设置。
 
 带圈数字的使用与**字体**密切相关。
 stone-zeng 整理了一些常用的、自带的字体，及其适用范围。
@@ -207,7 +207,7 @@ stone-zeng 整理了一些常用的、自带的字体，及其适用范围。
 * 需要自己设定数字字体，而有的字体确实会缺失某些编号。
 * 如果采用钩子方法，则字体不易更改，**所有**的圆圈只能采用统一的字体；通俗做法可以在不同命令的定义中灵活选择字体样式。
 
-# pkg{qyd-footnote}
+# pkg{tnt-footnote}
 
 建议调用 `{footmisc}` 宏包，开启底端、每页等选项。
 而且也方便样式更改。
@@ -229,6 +229,6 @@ stone-zeng 整理了一些常用的、自带的字体，及其适用范围。
 
 所以说，这个想法暂时难以实现，也没有必要。
 
-# pkg{qyd-sjqy} 钢筋符号输入
+# pkg{tnt-sjqy} 钢筋符号输入
 利用 SJQY.ttf 字体生成钢筋一级到五级的符号。
 定义为形如 `\stA` 的命令。

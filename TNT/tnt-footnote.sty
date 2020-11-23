@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesPackage{qyd-footnote}[footnote with circled number and other settings]
+\ProvidesPackage{tnt-footnote}[footnote with circled number and other settings]
 
 \RequirePackage[bottom,perpage,hang]{footmisc}
 \RequirePackage{etoolbox}
@@ -18,12 +18,12 @@
 %  \save@makefntext{#1}}}
 
 % 使用带圈数字作为编号
-\RequirePackage{qyd-pifont-circlednum}% 调用 Pifont 字体
-% pkg{qyd-pifont-circlednum} 优势：精巧好看。劣势：只有1~10可用。
-\RequirePackage{qyd-tikz-textcircled}% 在数字外绘制圆形。
-% pkg{qyd-tikz-textcircled} 优势：只是绘制圆形，不影响字体等设置。劣势：如果数字/字母过多，则圆形过大。
-\RequirePackage{qyd-xuni-textcircled}% 调用xunicode字体。
-% pkg{qyd-xuni-textcircled} 优势：可以支持三位数字的编号。劣势：字体不能在此处修改，需要回到 xuni-textcircled 宏包。
+\RequirePackage{tnt-pifont-circlednum}% 调用 Pifont 字体
+% pkg{tnt-pifont-circlednum} 优势：精巧好看。劣势：只有1~10可用。
+\RequirePackage{tnt-tikz-textcircled}% 在数字外绘制圆形。
+% pkg{tnt-tikz-textcircled} 优势：只是绘制圆形，不影响字体等设置。劣势：如果数字/字母过多，则圆形过大。
+\RequirePackage{tnt-xuni-textcircled}% 调用xunicode字体。
+% pkg{tnt-xuni-textcircled} 优势：可以支持三位数字的编号。劣势：字体不能在此处修改，需要回到 xuni-textcircled 宏包。
 % 作为宏包选项
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -43,7 +43,7 @@
 \ProcessKeyvalOptions*
 \def\ftncircled#1{%
   \ifnum\value{#1}>9% 脚注数字最多处理到 9
-    \PackageWarning{qyd-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
+    \PackageWarning{tnt-footnote}{Too many footnotes in this page. Keep footnote less than 10.}
   \fi% 编号不能过多，所以强烈建议打开 perpage 选项。
   \ifftnt@pifontrm
     \pifontrm{#1}% pifont 接受的就是 <counter>

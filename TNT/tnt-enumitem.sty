@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesPackage{qyd-enumitem}[list with enumitem]
+\ProvidesPackage{tnt-enumitem}[list with enumitem]
 
 \RequirePackage[shortlabels]{enumitem}
 \setlist{nosep}% 移除所有列表环境的竖向默认间距，以符合中文习惯。
@@ -20,7 +20,7 @@
 \setlist[description]{font=\bfseries}
 
 \newlist{inlinecn}{enumerate*}{1}
-\RequirePackage{qyd-tikz-textcircled}% 为了 \tikzcircnum 命令
+\RequirePackage{tnt-tikz-textcircled}% 为了 \tikzcircnum 命令
 \setlist[inlinecn,1]{label=\tikzcircnum{\arabic*}}
 \setlist[inlinecn,2]{label= 第\chinese{inlinecni}，}% 中文
 
