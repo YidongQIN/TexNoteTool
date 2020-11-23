@@ -1,15 +1,26 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{tnt-algorithm}[algorithm and algorithmic]
 
-% 算法环境
-\RequirePackage{algorithm}
-\RequirePackage{algorithmic}
-\algsetup{
-  linenodelimiter=.,
-  % indent=4em,
-  linenosize=\small,
-  }
-\floatname{algorithm}{算法}% 两种重命名方法等效
-% \renewcommand{\ALG@name}{算法}%
-\renewcommand{\algorithmicrequire}{\textbf{输入}}
-\renewcommand{\algorithmicensure}{\textbf{输出}}
+% 算法环境 推荐 algorithm2e
+\RequirePackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
+\setlength{\algomargin}{2em}
+\renewcommand{\algorithmcfname}{算法}
+\renewcommand{\listalgorithmcfname}{算法索引}
+\SetAlgoCaptionSeparator{.}% caption 的分隔符
+\SetAlCapSkip{6bp}% 代码与 caption 的竖向间距
+\SetNlSty{small}{}{.}
+\SetNlSkip{0.5em}
+
+% 算法环境 algorithms
+% \RequirePackage{algorithm}
+% \RequirePackage{algorithmic}
+% \algsetup{
+%   linenodelimiter=.,
+%   indent=4em,
+%   linenosize=\small,
+%   }
+% \floatname{algorithm}{算法}% 两种重命名方法等效 \renewcommand{\ALG@name}{算法}
+% \renewcommand{\algorithmicrequire}{\textbf{输入}}
+% \renewcommand{\algorithmicensure}{\textbf{输出}}
+% \renewcommand{\algorithmiccomment}[1]{\hfill {\small\itshape// #1}}
+
