@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"latex-workshop.latex.autoBuild.run": "onFileChange",
+		"cSpell.words": [
+			"ackn",
+			"csname",
+			"eapply",
+			"endcsname",
+			"kvoptions",
+			"xleftmargin",
+			"xrightmargin",
+			"xunicode"
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"coenraads.bracket-pair-colorizer-2",
+			"james-yu.latex-workshop",
+
+		]
+	}
+}

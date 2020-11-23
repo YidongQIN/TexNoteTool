@@ -1,5 +1,4 @@
 ## vscode
-*.code-workspace
 *.pdf
 ## test file
 test.*
