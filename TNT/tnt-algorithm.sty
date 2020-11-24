@@ -1,6 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{tnt-algorithm}[algorithm and algorithmic]
 
+\RequirePackage{xcolor}
+
 % 算法环境 推荐 algorithm2e
 \RequirePackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
 \setlength{\algomargin}{2em}
@@ -8,8 +10,14 @@
 \renewcommand{\listalgorithmcfname}{算法索引}
 \SetAlgoCaptionSeparator{.}% caption 的分隔符
 \SetAlCapSkip{6bp}% 代码与 caption 的竖向间距
+\SetKwInOut{KwIn}{输入}
+\SetKwInOut{KwOut}{输出}
 \SetNlSty{small}{}{.}
 \SetNlSkip{0.5em}
+\SetAlFnt{\small\ttfamily}
+% 自定义一种字体
+\newcommand\algocomm[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{algocomm}
 
 % 算法环境 algorithms
 % \RequirePackage{algorithm}
