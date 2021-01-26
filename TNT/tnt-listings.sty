@@ -20,19 +20,23 @@
 \RequirePackage{listings}
 % General Settings
 \lstset{
-  float=htbp,
-  breaklines=true,
-  frame=single,
-  aboveskip={12bp \@plus2pt \@minus2pt},
-  belowskip={12bp \@plus2pt \@minus2pt},
-  captionpos=b,
   abovecaptionskip=0bp,
+  aboveskip={12bp \@plus2pt \@minus2pt},
   belowcaptionskip=0bp,
-  escapeinside={\%*}{*)},
+  belowskip={12bp \@plus2pt \@minus2pt},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  escapeinside={;*}{*;},% 离开 Listings 进入 LaTeX 模式用于输入数学公式等
+  float=htbp,
+  frame=single,
   numbers=left,
-  numbersep=15pt,
+  numbersep=5pt,
   numberstyle=\tiny\color{gray},
+  showspaces=false,
   tabsize=2,
+  extendedchars=false,
+  mathescape=false,% 保证 $ 符号不会被认为是数学公式而导致报错
   xleftmargin=2em,
   xrightmargin=2em,
 }
