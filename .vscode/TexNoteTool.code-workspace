@@ -5,6 +5,11 @@
 		}
 	],
 	"settings": {
+		"workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#008080",
+			"titleBar.activeForeground": "#EFEDE6",
+			"statusBar.background": "#307532"
+		},
 		"latex-workshop.latex.autoBuild.run": "onFileChange",
 		"latex-workshop.view.pdf.viewer": "tab",
 		"cSpell.words": [
@@ -22,7 +27,6 @@
 		"recommendations": [
 			"coenraads.bracket-pair-colorizer-2",
 			"james-yu.latex-workshop",
-
 		]
 	}
 }
