@@ -8,7 +8,7 @@
 		"workbench.colorCustomizations": {
 			"titleBar.activeBackground": "#008080",
 			"titleBar.activeForeground": "#EFEDE6",
-			"tab.activeBackground": "#307532"
+			"tab.activeBackground": "#575A5E"
 		},
 		"latex-workshop.latex.autoBuild.run": "onFileChange",
 		"latex-workshop.view.pdf.viewer": "tab",
