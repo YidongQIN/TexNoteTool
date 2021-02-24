@@ -8,10 +8,9 @@
 		"workbench.colorCustomizations": {
 			"titleBar.activeBackground": "#008080",
 			"titleBar.activeForeground": "#EFEDE6",
-			"tab.activeBackground": "#575A5E"
+			"tab.activeBackground": "#27872787"
 		},
 		"latex-workshop.latex.autoBuild.run": "onFileChange",
-		"latex-workshop.view.pdf.viewer": "tab",
 		"cSpell.words": [
 			"ackn",
 			"csname",
