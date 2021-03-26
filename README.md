@@ -8,7 +8,7 @@ The acronym is 'TNT', same as 'Typographical Number Theory'.
 
 # Features
 1. Personal perferance for layout and package settings.
-   * each package's setting is a single `qyd-<pkg>.sty` file, so it could be used in other documents.
+   * each package's setting is a single `tnt-<pkg>.sty` file, so it could be used in other documents.
 2. Printable materials for knowledge organization and sharing.
    * Inspired by [Feynman Technique](https://www.developgoodhabits.com/feynman-technique/).
 
