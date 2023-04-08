@@ -9,8 +9,10 @@
 
 % 脚注中的编号默认是上标样式，可改为普通大小。
 % 来源：https://www.zhihu.com/question/53030087
+\makeatletter
 \def\nosuper@makefnmark{\hbox{\normalfont\@thefnmark\space}}
 \patchcmd\@makefntext{\@makefnmark}{\nosuper@makefnmark}{}{}
+\makeatother
 %% 不用 etoolbox 的另一种打临时热补丁的写法
 %\let\save@makefntext\@makefntext
 %\long\def\@makefntext#1{{%
