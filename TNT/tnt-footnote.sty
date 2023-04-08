@@ -25,8 +25,11 @@
   \setlength\parindent{2\ccwd}\selectfont
   \noindent\llap{\@thefnmark\ }#1}
 
-% 脚注格式与标记的间距
+% 脚注文字与标记的间距
 \setlength{\footnotemargin}{1em}
+
+% 脚注文字格式
+\renewcommand{\footnotelayout}{\itshape}
 
 %% 两条脚注之间的竖向间距
 \setlength{\footnotesep}{12pt}
@@ -82,9 +85,3 @@
 }
 \renewcommand\thefootnote{\ftncircled{footnote}}
 \renewcommand\thempfootnote{\ftncircled{mpfootnote}}% minipage footnote
-
-% 脚注中编号与文字间距
-\footnotemargin1.5em
-
-% 脚注文字格式
-\renewcommand{\footnotelayout}{\itshape}
