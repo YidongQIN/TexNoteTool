@@ -17,6 +17,20 @@
 %  \let\@makefnmark\nosuper@makefnmark
 %  \save@makefntext{#1}}}
 
+% 悬挂的脚注格式
+\renewcommand\@makefntext[1]{%
+  \setlength\leftskip{1.2\ccwd}%
+  \setlength\parindent{2\ccwd}\selectfont
+  \noindent\llap{\@thefnmark\ }#1}
+
+%% 两条脚注之间的竖向间距
+\setlength{\footnotesep}{12pt}
+
+%% 将文中和脚注中的符号都改为正文大小
+% \makeatletter
+% \def\@makefnmark{\hbox{\normalfont\@thefnmark}}
+% \makeatother
+
 % 使用带圈数字作为编号
 \RequirePackage{tnt-pifont-circlednum}% 调用 Pifont 字体
 % pkg{tnt-pifont-circlednum} 优势：精巧好看。劣势：只有1~10可用。
