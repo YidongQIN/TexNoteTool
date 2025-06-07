@@ -233,11 +233,14 @@ stone-zeng 整理了一些常用的、自带的字体，及其适用范围。
 利用 SJQY.ttf 字体生成钢筋一级到五级的符号。
 定义为形如 `\stA` 的命令。
 
-# TODO font
+# pkg{iftex-font} 根据引擎调用字体宏包
 
+在不同的引擎下，修改字体配置的宏包是不一样的。
 用 `iftex` 判断引擎是否是 XeLaTeX，并选择加载相应的字体宏包。
-在 XeLaTeX 下，启用 `fontspec` 宏包，并默认加载最常用的 Times New Roman 字体；
-否则，在 `pdfLaTeX` 等引擎下，采用另一套配置。
+
+- 在 XeLaTeX 下，启用 `fontspec` 宏包；
+- 否则，在 `pdfLaTeX` 等引擎下，启用 `inputenc` 和 `fontenc` 宏包。
+- 两种引擎下，默认采用类似 Times New Roman 效果的数学字体。
 
 TODO：
 中文字体只能在 XeLaTeX 下启用，是否要添加一套中文字体的选择？

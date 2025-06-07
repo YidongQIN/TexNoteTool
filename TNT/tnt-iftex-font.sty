@@ -12,10 +12,12 @@
 \else % pdfLaTeX
     \RequirePackage[utf8]{inputenc}%  Unicode
     \RequirePackage[T1]{fontenc}%
-    \RequirePackage{mathptmx}% OR {times}
+    % \RequirePackage{mathptmx}% 旧时代方案， OR {times}
+    \RequirePackage{newtxtext} % 更接近 Times New Roman 的文本字体
+    \RequirePackage{amsmath,amssymb}% Required for math commands in pdfLaTeX
+    % \RequirePackage{newtxmath} % 适配的数学字体，但可能有重复定义的冲突
     \RequirePackage{helvet}% Monofont is Helvetica
     \renewcommand{\sfdefault}{phv}  %  Helvetica
-    \RequirePackage{amsmath,amssymb}% Required for math commands in pdfLaTeX
     \RequirePackage{textcomp}% support for text symbols
     \RequirePackage{lmodern}
 \fi
