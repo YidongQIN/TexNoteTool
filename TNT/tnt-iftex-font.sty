@@ -1,0 +1,21 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{iftex-font}[Font Selection by XeLaTeX or not]
+
+% TEX Engine
+\RequirePackage{iftex}
+% XeLaTeX/LuaLaTeX
+\ifXeTeX
+    \RequirePackage{fontspec}% fontspec
+    \setmainfont{Times New Roman}% Times New Roman
+    \RequirePackage{unicode-math}%
+    \setmathfont{XITS Math}
+\else % pdfLaTeX
+    \RequirePackage[utf8]{inputenc}%  Unicode
+    \RequirePackage[T1]{fontenc}%
+    \RequirePackage{mathptmx}% OR {times}
+    \RequirePackage{helvet}% Monofont is Helvetica
+    \renewcommand{\sfdefault}{phv}  %  Helvetica
+    \RequirePackage{amsmath,amssymb}% Required for math commands in pdfLaTeX
+    \RequirePackage{textcomp}% support for text symbols
+    \RequirePackage{lmodern}
+\fi

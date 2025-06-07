@@ -232,3 +232,13 @@ stone-zeng 整理了一些常用的、自带的字体，及其适用范围。
 # pkg{tnt-sjqy} 钢筋符号输入
 利用 SJQY.ttf 字体生成钢筋一级到五级的符号。
 定义为形如 `\stA` 的命令。
+
+# TODO font
+
+用 `iftex` 判断引擎是否是 XeLaTeX，并选择加载相应的字体宏包。
+在 XeLaTeX 下，启用 `fontspec` 宏包，并默认加载最常用的 Times New Roman 字体；
+否则，在 `pdfLaTeX` 等引擎下，采用另一套配置。
+
+TODO：
+中文字体只能在 XeLaTeX 下启用，是否要添加一套中文字体的选择？
+不过，中文字体通常启用了 ctex 类型，有自带的字体处理命令。
