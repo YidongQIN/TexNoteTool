@@ -1,0 +1,68 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{macwinfont}[Use Windows Font in MacOS]
+
+\RequirePackage{ifplatform}
+\RequirePackage{xeCJK}
+\RequirePackage{xeCJKfntef}%
+
+\RequirePackage{fontspec}
+
+% 定义所有必要字体族
+\newcommand{\setupSystemFonts}{
+  \ifwindows
+    % Windows 字体配置
+    \setCJKmainfont{SimSun}[
+      AutoFakeBold  = true,
+      Path          = C:/Windows/Fonts/
+    ]
+    \setCJKsansfont{SimHei}[
+      Path = C:/Windows/Fonts/
+    ]
+    \setCJKfamilyfont{fangsong}{FangSong}[
+      Path = C:/Windows/Fonts/
+    ]
+    \setCJKfamilyfont{lishu}{LiSu}[
+      Path = C:/Windows/Fonts/
+    ]
+    \setCJKfamilyfont{kai}{KaiTi}[
+      Path = C:/Windows/Fonts/,
+      ItalicFont = KaiTi
+    ]
+  \fi
+  \ifmacosx
+    % macOS 字体配置
+    \setCJKmainfont{STSong}[
+      BoldFont      = STHeiti,
+      Extension     = .ttc
+    ]
+    \setCJKsansfont{PingFang SC}[
+      UprightFont   = *-Regular,
+      BoldFont      = *-Bold
+    ]
+    \setCJKfamilyfont{fangsong}{STFangsong}[
+      Extension     = .ttc
+    ]
+    \setCJKfamilyfont{lishu}{stliti}[
+      Extension     = .ttf
+    ]
+    \setCJKfamilyfont{kai}{STKaiti}[
+      Extension     = .ttc,
+      ItalicFont    = STKaiti
+    ]
+  \fi
+}
+
+\setupSystemFonts% \AtEndOfClass{\setupSystemFonts}
+\providecommand{\songti}{\CJKfamily{rmfamily}}
+\providecommand{\heiti}{\CJKfamily{sansfamily}}
+\providecommand{\fangsong}{\CJKfamily{fangsong}}
+\providecommand{\lishu}{\CJKfamily{lishu}}
+\providecommand{\kai}{\CJKfamily{kai}}
+
+\AtBeginDocument{
+  \@ifpackageloaded{fontspec}{
+    \@ifundefined{ifwindows}{\PackageWarning{tnt-macwinfont}{Font config skipped}}{}
+  }{
+    \PackageWarning{tnt-macwinfont}{fontspec not loaded, fallback to ctex defaults}
+  }
+}
