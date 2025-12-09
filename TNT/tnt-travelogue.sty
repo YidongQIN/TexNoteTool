@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{tnt-travelogue}[Qin Yidong's LaTeX package for writing travelogue]
+
+\RequirePackage{graphicx} % 支持插图
+\RequirePackage{caption} % 用于自定义标题样式
+\RequirePackage{float} % 提供更好的浮动体控制（如 [H] 选项）
+
+% 自定义图片标题样式
+\DeclareCaptionFont{songti}{\songti} % 标题使用宋体
+\captionsetup[figure]{
+    format=hang, % 标题悬挂缩进
+    labelsep=quad, % 标签和内容之间使用一个空格的间距
+    font={songti, small}, % 字体：宋体，小字号
+    justification=centering % 文本居中对齐[6](@ref)
+}
+% 如果需要将“图”改为“Fig”，可以取消下一行的注释：
+% \renewcommand{\figurename}{Fig}
+
+% 彩色引述环境
+\RequirePackage[most]{tcolorbox} % 引入tcolorbox宏包来创建彩色盒子[7,8](@ref)
+\RequirePackage{xcolor} % 提供颜色支持
+
+% 定义一个新的彩色引述环境
+\newtcolorbox{peom}[1][]{%
+    enhanced, % 启用增强模式
+    sharp corners, % 直角
+    frame hidden, % 隐藏外边框
+    borderline west={2pt}{0pt}{red!75!black}, % 在盒子左侧绘制一条红色粗边框[7,8](@ref)
+    colback=red!5!white, % 设置背景色为浅红色[7](@ref)
+    left=15pt, % 左侧内边距，为边框留出空间[8](@ref)
+    fontupper=\itshape, % 引述文字使用斜体
+    before skip=15pt, % 环境前的垂直间距
+    after skip=15pt, % 环境后的垂直间距
+    #1 % 允许通过可选参数进行额外定制
+}
