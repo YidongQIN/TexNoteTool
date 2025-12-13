@@ -3,7 +3,9 @@
 
 \RequirePackage[bottom,perpage,hang]{footmisc}
 \RequirePackage{pifont}
-\renewcommand{\thefootnote}{\ding{\numexpr171+\value{footnote}}} % 重新定义脚注标记修改脚注序号为正常大小
+\renewcommand{\thefootnote}{\ding{\numexpr171+\value{footnote}}}
+
+% 重新定义脚注标记修改脚注序号为正常大小
 \makeatletter
 % 重定义正文中的脚注标记：保持上标小字
 \renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\@thefnmark}}}
