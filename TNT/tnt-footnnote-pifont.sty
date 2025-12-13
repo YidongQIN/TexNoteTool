@@ -1,0 +1,15 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{tnt-footnote-pifont}[footnote with pifont circled number and font size settings]
+
+\RequirePackage[bottom,perpage,hang]{footmisc}
+\RequirePackage{pifont}
+\renewcommand{\thefootnote}{\ding{\numexpr171+\value{footnote}}} % 重新定义脚注标记修改脚注序号为正常大小
+\makeatletter
+% 重定义正文中的脚注标记：保持上标小字
+\renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\@thefnmark}}}
+% 重定义页面底部的脚注文本：序号正常大小
+\renewcommand\@makefntext[1]{%
+  \parindent 1em\noindent
+  \hb@xt@1.8em{\hfil\normalfont\@thefnmark\ }#1%
+}
+\makeatother

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesPackage{tnt-footnote}[footnote with circled number and other settings]
+\ProvidesPackage{tnt-footnote-selection}[footnote with circled number and other settings]
 
 \RequirePackage[bottom,perpage,hang]{footmisc}
 \RequirePackage{etoolbox}
@@ -53,6 +53,7 @@
   prefix=ftnt@
 }
 \DeclareStringOption{numstyle}
+% 用法\usepacekage[numstyle=pifontrm/pifontsf/...]{tnt-footnote-selection}
 \newif\ifftnt@pifontrm
 \ftnt@pifontrmtrue% 默认使用 pifont 的衬线序号
 \newif\ifftnt@pifontsf
