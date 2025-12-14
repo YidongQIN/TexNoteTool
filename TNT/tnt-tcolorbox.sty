@@ -24,6 +24,7 @@
     float=h, % 允许盒子在此处浮动（here）
     every float=\centering, % 使整个盒子居中
 }
+% 诗 首行《标题》，次行作者，正文居中。
 \newtcolorbox{poem}[2][]{
     colback=green!10!white, % 盒子背景色
     colbacktitle=green!10!white, % 标题背景色
@@ -31,11 +32,31 @@
     fontupper=\itshape, % 正文斜体
     fonttitle=\bfseries, % 标题粗体
     halign=flush center, % 文字水平居中对齐
-    % width=0.9\linewidth, % 盒子宽度
+    width=0.8\linewidth, % 盒子宽度
     left=2em,   % 盒子内容距离左边框的缩进
     right=2em,  % 盒子内容距离右边框的缩进
     top=1em,    % 盒子内容距离上边框的间距
     bottom=1em, % 盒子内容距离下边框的间距
+    title={\vspace{0.5em}\centering 《#2》\\ #1 \\ \vspace{0.5em}},
+    % enhanced, % 启用增强皮肤，以获得更多线条控制功能
+    titlerule=0pt, % 将标题下方横线的粗细设置为0，即可取消横线
+    float=h, % 允许盒子在此处浮动（here）
+    every float=\centering, % 使整个盒子居中
+}
+% 词 首行《标题》，次行作者，正文分散对齐，首行空2格。
+\newtcolorbox{poemci}[2][]{
+    colback=green!10!white, % 盒子背景色
+    colbacktitle=green!10!white, % 标题背景色
+    coltitle=green!70!black, % 标题文字颜色
+    fontupper=\itshape, % 正文斜体
+    fonttitle=\bfseries, % 标题粗体
+    halign=justify, % 文字水平居中对齐
+    width=0.8\linewidth, % 盒子宽度
+    left=2em,   % 盒子内容距离左边框的缩进
+    right=2em,  % 盒子内容距离右边框的缩进
+    top=1em,    % 盒子内容距离上边框的间距
+    bottom=1em, % 盒子内容距离下边框的间距
+    before upper={\parindent=2em}, % 添加首行缩进2em
     title={\vspace{0.5em}\centering 《#2》\\ #1 \\ \vspace{0.5em}},
     % enhanced, % 启用增强皮肤，以获得更多线条控制功能
     titlerule=0pt, % 将标题下方横线的粗细设置为0，即可取消横线
@@ -55,6 +76,7 @@
     after skip=15pt, % 环境后的垂直间距
     #1 % 允许通过可选参数进行额外定制
 }
+% 歌词
 \newtcolorbox{lyrics}[2][]{
     colback=blue!10!white,
     colbacktitle=red!10!white,
@@ -69,7 +91,7 @@
     after upper={\par\hfill\tcbtitle},
     title={——《#2》\,#1},
 }
-
+% 提示 TODO
 \newtcolorbox{todo}{
     colback=red!5!white,
     colframe=red!75!black,
