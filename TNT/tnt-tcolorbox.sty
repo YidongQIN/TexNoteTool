@@ -2,7 +2,7 @@
 \ProvidesPackage{tnt-tcolorbox}[Geometry of paper setting]
 
 % 彩色引述环境
-\RequirePackage[skins]{tcolorbox} % 引入tcolorbox宏包
+\RequirePackage[most]{tcolorbox} % 引入tcolorbox宏包
 \RequirePackage{xcolor} % 提供颜色支持
 %% 自定义样式
 \newtcolorbox{quotepar}[2][]{
@@ -15,8 +15,8 @@
     % width=0.6\linewidth, % 盒子宽度
     left=2em,   % 盒子内容距离左边框的缩进
     right=2em,  % 盒子内容距离右边框的缩进
-    top=1em,    % 盒子内容距离上边框的间距（可视为与“上正文”的空行）
-    bottom=1em, % 盒子内容距离下边框的间距（可视为与“下正文”的空行）
+    top=0.5em,    % 盒子内容距离上边框的间距（可视为与“上正文”的空行）
+    bottom=0.5em, % 盒子内容距离下边框的间距（可视为与“下正文”的空行）
     detach title, % 将标题与主体分离显示
     before upper={\parindent=2em}, % 添加首行缩进2em
     after upper={\par\vspace{1em}\hfill\tcbtitle}, % 在正文后添加1em垂直间距，然后右对齐落款
@@ -32,15 +32,14 @@
     fontupper=\itshape, % 正文斜体
     fonttitle=\bfseries, % 标题粗体
     halign=flush center, % 文字水平居中对齐
-    width=0.8\linewidth, % 盒子宽度
     left=2em,   % 盒子内容距离左边框的缩进
     right=2em,  % 盒子内容距离右边框的缩进
-    top=1em,    % 盒子内容距离上边框的间距
-    bottom=1em, % 盒子内容距离下边框的间距
-    title={\vspace{0.5em}\centering 《#2》\\ #1 \\ \vspace{0.5em}},
+    top=0.5em,    % 盒子内容距离上边框的间距
+    bottom=0.5em, % 盒子内容距离下边框的间距
+    title={\vspace{0.5em}\centering 《#2》\\ #1},
     % enhanced, % 启用增强皮肤，以获得更多线条控制功能
     titlerule=0pt, % 将标题下方横线的粗细设置为0，即可取消横线
-    float=h, % 允许盒子在此处浮动（here）
+    % float=h, % 允许盒子在此处浮动（here）
     every float=\centering, % 使整个盒子居中
 }
 % 词 首行《标题》，次行作者，正文分散对齐，首行空2格。
@@ -51,13 +50,12 @@
     fontupper=\itshape, % 正文斜体
     fonttitle=\bfseries, % 标题粗体
     halign=justify, % 文字水平居中对齐
-    width=0.8\linewidth, % 盒子宽度
     left=2em,   % 盒子内容距离左边框的缩进
     right=2em,  % 盒子内容距离右边框的缩进
-    top=1em,    % 盒子内容距离上边框的间距
-    bottom=1em, % 盒子内容距离下边框的间距
+    top=0.5em,    % 盒子内容距离上边框的间距
+    bottom=0.5em, % 盒子内容距离下边框的间距
     before upper={\parindent=2em}, % 添加首行缩进2em
-    title={\vspace{0.5em}\centering 《#2》\\ #1 \\ \vspace{0.5em}},
+    title={\vspace{0.5em}\centering 《#2》\\ #1},
     % enhanced, % 启用增强皮肤，以获得更多线条控制功能
     titlerule=0pt, % 将标题下方横线的粗细设置为0，即可取消横线
     float=h, % 允许盒子在此处浮动（here）
